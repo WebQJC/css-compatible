@@ -1,0 +1,87 @@
+/**
+*css3需要做哪些浏览器兼容内核设置
+*1、-moz-：代表FireFox浏览器私有属性  
+*2、-ms-：代表IE浏览器私有属性  
+*3、-webkit-：代表safari、chrome浏览器私有属性   
+*4、-o-：代表opera浏览器私有属性 
+**/
+
+/* 1、transition 过渡 */
+/**
+*1.transition-property:添加过渡效果的样式属性名称 (left, background-color)
+*2.transition-duration:过渡效果的耗时 以秒做为单位 (秒)
+*3.transition-timing-function:设置时间函数--控制运动的轨迹 (匀速：linear;变加速再慢速结尾：ease)
+*4.transition-delay:过渡效果的延迟(秒);
+**/
+/*简写：transition:属性名称 过渡时间 时间函数 延迟*/
+.transition{
+	width:100px;
+	height:100px;
+	background:red;
+	transition:width 2s;
+    -webkit-transition:width 2s;
+    -o-transition:width 2s;
+    -moz-transition:width 2s;
+    -ms-transition:width 2s;
+}
+.transition:hover
+{
+	width:300px;
+}
+
+/* transform 二维，三维*/
+/**
+*二维
+*1.transform: translate(10px,10px);(写法还有translateX(10px);translateY(10px)) =>移动
+*2.transform: scale(2,1); (写法还有scaleX(2);scaleY(0.5))=>缩放
+*3.transform: rotate(-90deg); =>旋转；可设置轴心 transform-origin: left top;(值有：left top right bottom center)
+*4.transform:skew(30deg,-30deg);(写法还有skewX(30deg);skewY(30deg))=>斜切
+*三维
+*1.transform: translate3d(100px,200px,400px); =>移动;ranslate3d(X，Y，Z)
+*2.transform:scale3d(0.1,2,10); =>缩放; scale3d(x 方向上的缩放，y 方向的缩放，z 方向的缩放)
+*3.transform: rotate3d(1,1,1,330deg); =>旋转； rotate3d(x,y,z,angle)
+**/
+.transform{
+    width:100px;
+	height:100px;
+	background-color:yellow;
+    transform:rotate(7deg);
+    -ms-transform:rotate(7deg);     
+    -moz-transform:rotate(7deg);    
+    -webkit-transform:rotate(7deg);
+    -o-transform:rotate(7deg); 
+   
+}
+
+/* animation 动画 */
+@-webkit-keyframes anim1 { 
+    0% { 
+         opacity: 0; 
+         font-size: 12px; 
+    } 
+    100% { 
+         opacity: 1; 
+         font-size: 24px; 
+    } 
+ } 
+ .animation { 
+     /*1.animation-name:指定动画名称*/
+    -webkit-animation-name: anim1 ; 
+    /*2.设置动画的总耗时*/
+    -webkit-animation-duration: 1.5s; 
+    /*3.设置动画的播放次数，默认为 1 次 可以指定具体的数值， 也可以指定 infinite(无限次)*/
+    -webkit-animation-iteration-count: 4; 
+    /*4.设置交替动画 alternate:来回交替*/
+    -webkit-animation-direction: alternate; 
+    /*5.设置动画的延迟*/
+    -webkit-animation-delay: 2s;
+    /*5.设置动画结束时的状态：默认情况下，动画执行完毕之后，会回到原 始状态 
+      5.1.forwards:会保留动画结束时的状态，在有延迟的情况下，并不会立刻进 行到动画的初始状态 
+      5.2.backwards:不会保留动画结束时的状态，在添加了动画延迟的前提下， 如 果动画有初始状态，那么会立刻进行到初始状态 
+      5.3.both:会保留动画的结束时状态，在有延迟的情况下也会立刻进入到动画 的 初始状态*/
+    -webkit-animation-fill-mode: forwards;
+    /*6.动画的时间函数*/ 
+    -webkit-animation-timing-function: linear;  /*(ease-in-out)*/
+    /*设置动画的播放状态 paused:暂停 running:播放*/
+    -webkit-animation-play-state: paused; 
+ }
